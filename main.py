@@ -36,6 +36,9 @@ class Plugin:
     async def start_timer(self):
         self.loop.create_task(self.long_running())
 
+    async def turbo_giggle(self):
+        await decky.emit("timer_event", "LMAO! :)", True, 2)
+
     # Migrations that should be performed before entering `_main()`.
     async def _migration(self):
         decky.logger.info("Migrating")

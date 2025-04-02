@@ -2,7 +2,7 @@ import {
   ButtonItem,
   PanelSection,
   PanelSectionRow,
-  Navigation,
+  // Navigation,
   staticClasses
 } from "@decky/ui";
 import {
@@ -14,7 +14,7 @@ import {
   // routerHook
 } from "@decky/api"
 import { useState } from "react";
-import { FaShip } from "react-icons/fa";
+import { FaLaughSquint, FaShip } from "react-icons/fa";
 
 // import logo from "../assets/logo.png";
 
@@ -28,6 +28,9 @@ const add = callable<[first: number, second: number], number>("add");
 // It starts a (python) timer which eventually emits the event 'timer_event'
 const startTimer = callable<[], void>("start_timer");
 
+// This function calls the python function "turbo_giggle", which takes in no arguments and returns nothing.
+const turboGiggle = callable<[], void>("turbo_giggle");
+
 function Content() {
   const [result, setResult] = useState<number | undefined>();
 
@@ -37,8 +40,8 @@ function Content() {
   };
 
   return (
-    <PanelSection title="Panel Section">
-      <PanelSectionRow>
+    <PanelSection title="|\_^,,^_/|">
+      {/* <PanelSectionRow>
         <ButtonItem
           layout="below"
           onClick={onClick}
@@ -53,8 +56,15 @@ function Content() {
         >
           {"Start Python timer"}
         </ButtonItem>
+      </PanelSectionRow> */}
+      <PanelSectionRow>
+        <ButtonItem
+          layout="below"
+          onClick={() => turboGiggle()}
+        >
+          {"Execute Turbo Giggle"}
+        </ButtonItem>
       </PanelSectionRow>
-
       {/* <PanelSectionRow>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <img src={logo} />
@@ -89,10 +99,10 @@ export default definePlugin(() => {
     test2: boolean,
     test3: number
   ]>("timer_event", (test1, test2, test3) => {
-    console.log("Template got timer_event with:", test1, test2, test3)
+    // console.log("Template got timer_event with:", test1, test2, test3)
     toaster.toast({
-      title: "template got timer_event",
-      body: `${test1}, ${test2}, ${test3}`
+      title: "Turbo Giggle",
+      body: `lolololololololololol`
     });
   });
 
@@ -100,11 +110,11 @@ export default definePlugin(() => {
     // The name shown in various decky menus
     name: "Test Plugin",
     // The element displayed at the top of your plugin's menu
-    titleView: <div className={staticClasses.Title}>Decky Example Plugin</div>,
+    titleView: <div className={staticClasses.Title}>Turbo Giggle</div>,
     // The content of your plugin's menu
     content: <Content />,
     // The icon displayed in the plugin list
-    icon: <FaShip />,
+    icon: <FaLaughSquint />,
     // The function triggered when your plugin unloads
     onDismount() {
       console.log("Unloading")
